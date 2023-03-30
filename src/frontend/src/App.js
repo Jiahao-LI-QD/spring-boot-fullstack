@@ -7,11 +7,37 @@ import {
     PieChartOutlined,
     TeamOutlined,
     UserOutlined,
+    LoadingOutlined
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Table, Spin, Empty } from 'antd';
 import MenuItem from "antd/es/menu/MenuItem";
 
+const spinning = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
 const { Header, Content, Footer, Sider } = Layout;
+
+const columns = [
+    {
+        title: 'Id',
+        dataIndex: 'id',
+        key: 'id',
+    },
+    {
+        title: 'Name',
+        dataIndex: 'name',
+        key: 'name',
+    },
+    {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
+    },
+    {
+        title: 'Gender',
+        dataIndex: 'gender',
+        key: 'gender',
+    }
+];
 
 function getItem(
     label: React.ReactNode,
@@ -42,20 +68,43 @@ const items: MenuItem[] = [
 function App() {
     const [students, setStudents] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
+    const [fetching, setFetching] = useState(true);
     const {
         token: { colorBgContainer },
     } = theme.useToken();
+
     const fetchStudents = () =>
         getAllStudents()
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setStudents(data);
+                setFetching(false);
             });
+
     useEffect(() => {
         console.log("component is mounted");
-        fetchStudents();
+        fetchStudents().then();
     }, []);
+
+    const  renderStudents = () => {
+        if (fetching){
+            return <Spin indicator={spinning} />;
+        }
+        if (students.length <= 0){
+            return <Empty />;
+        }
+        else {
+            return <Table dataSource={students}
+                          columns={columns}
+                          bordered
+                          title={() => 'Students'}
+                          pagination={{ pageSize: 50 }}
+                          scroll={{ y: 240 }}
+                          rowKey={(student) => student.id}
+                          />;
+        }
+    }
 
     if (students.length <= 0){
         return "no data";
@@ -74,10 +123,10 @@ function App() {
                     <Breadcrumb.Item>Bill</Breadcrumb.Item>
                 </Breadcrumb>
                 <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-                    Bill is a cat.
+                    {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
+            <Footer style={{ textAlign: 'center' }}>By Plus Li</Footer>
         </Layout>
     </Layout>
 }
