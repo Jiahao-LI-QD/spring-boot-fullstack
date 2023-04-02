@@ -7,9 +7,10 @@ import {
     PieChartOutlined,
     TeamOutlined,
     UserOutlined,
-    LoadingOutlined
+    LoadingOutlined,
+    PlusOutlined
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Table, Spin, Empty } from 'antd';
+import {Breadcrumb, Layout, Menu, theme, Table, Spin, Empty, Button} from 'antd';
 import MenuItem from "antd/es/menu/MenuItem";
 
 const spinning = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -23,9 +24,14 @@ const columns = [
         key: 'id',
     },
     {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
+        title: 'firstName',
+        dataIndex: 'firstName',
+        key: 'firstName',
+    },
+    {
+        title: 'lastName',
+        dataIndex: 'lastName',
+        key: 'lastName',
     },
     {
         title: 'Email',
@@ -98,9 +104,11 @@ function App() {
             return <Table dataSource={students}
                           columns={columns}
                           bordered
-                          title={() => 'Students'}
+                          title={() => <Button type="primary" shape="round" icon={<PlusOutlined />} size="medium">
+                              Add New Student
+                              </Button>}
                           pagination={{ pageSize: 50 }}
-                          scroll={{ y: 240 }}
+                          scroll={{ y: 500 }}
                           rowKey={(student) => student.id}
                           />;
         }
@@ -118,10 +126,7 @@ function App() {
         <Layout className="site-layout">
             <Header style={{ padding: 0, background: colorBgContainer }} />
             <Content style={{ margin: '0 16px' }}>
-                <Breadcrumb style={{ margin: '16px 0' }}>
-                    <Breadcrumb.Item>User</Breadcrumb.Item>
-                    <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                </Breadcrumb>
+                <Breadcrumb style={{ margin: '16px 0' }} items={[{title:"STUDENTS"}]}/>
                 <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
                     {renderStudents()}
                 </div>
