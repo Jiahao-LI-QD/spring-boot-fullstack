@@ -2,7 +2,7 @@ import {Drawer, Input, Col, Select, Form, Row, Button, Spin} from 'antd';
 import {addNewStudent} from "./client";
 import {LoadingOutlined} from "@ant-design/icons";
 import {useState} from 'react';
-import {success, error} from './Messages';
+import {successMsg, errorMsg} from './Messages';
 
 const {Option} = Select;
 const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
@@ -20,10 +20,13 @@ function StudentDrawerForm({showDrawer, setShowDrawer, fetchStudents}) {
                 console.log("student added");
                 onCLose();
                 fetchStudents();
-                success(`student with email ${student.email} added`);
+                successMsg(`student with email ${student.email} added`);
             }).catch(err => {
-            console.log(err);
-            error(err);
+                console.log(err.response);
+                err.response.json().then(res => {
+                    console.log(res);
+                    errorMsg(`Can not add new student: ${res.message} - [status coed: ${res.status} ]`)
+                })
         }).finally(() => {
             setSubmitting(false);
         })

@@ -1,6 +1,8 @@
 # spring-boot-fullstack
 <hr>
 
+[Preview](http://springbootreactfullstack-env.eba-qdcyddxq.ca-central-1.elasticbeanstalk.com/)
+
 ## BackEnd ##
 
 Student
@@ -32,3 +34,10 @@ Mockaroo generates fake data for dev-test.
 <hr>
 
 ## Deployment ##
+1. Manually Deployment: push docker to docker hub with plugin jib
+```
+    mvnw clean install -P build-frontend -P jib-push-to-dockerhub -Dapp.image.tag=x
+```
+
+### Environment variables ###
+1. spring.profiles.active=dev

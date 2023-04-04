@@ -7,7 +7,7 @@ import {
 import {Breadcrumb, Layout, Menu, theme, Table, Spin, Empty, Button, Tag, Avatar, Popconfirm} from 'antd';
 import MenuItem from "antd/es/menu/MenuItem";
 import StudentDrawerForm from "./StudentDrawerForm";
-import {error, success, warning} from "./Messages";
+import {errorMsg, successMsg, warningMsg} from "./Messages";
 
 
 const spinning = <LoadingOutlined style={{fontSize: 24}} spin/>;
@@ -23,13 +23,17 @@ const TheAvatar = ({firstName, lastName}) => {
 }
 
 const removeStudent = (studentId, callback) => {
-    if (studentId == null) warning("StudentId is empty!");
+    if (studentId == null) warningMsg("StudentId is empty!");
     deleteStudent(studentId).then(() => {
-            success(`student with id ${studentId}`);
+            successMsg(`student with id ${studentId}`);
             callback();
         })
         .catch(err => {
-            error(`Can't delete this student: ${err}`)
+            console.log(err.response);
+            err.response.json().then(res => {
+                console.log(res);
+                errorMsg(`Can't delete this student: ${res.message} - [status coed: ${res.status} ]`);
+            });
         })
 }
 
@@ -86,7 +90,13 @@ function App() {
             console.log(data);
             setStudents(data);
             setFetching(false);
-        });
+        }).catch(err => {
+            console.log(err.response);
+            err.response.json().then(res => {
+                console.log(res);
+                errorMsg(`Can not load students: ${res.message} - [status coed: ${res.status} ]`);
+            });
+        }).finally(() => setFetching(false));
 
     useEffect(() => {
         console.log("component is mounted");
@@ -98,7 +108,23 @@ function App() {
             return <Spin indicator={spinning}/>;
         }
         if (students.length <= 0) {
-            return <Empty/>;
+            return <>
+                <StudentDrawerForm
+                    showDrawer={showDrawer}
+                    setShowDrawer={setShowDrawer}
+                    fetchStudents={fetchStudents}
+                />
+                <Tag style={{marginBottom: "10px"}}>
+                    Number of student: {students.length}
+                </Tag>
+                <br/>
+                <Button
+                    onClick={() => setShowDrawer(!showDrawer)}
+                    type="primary" shape="round" icon={<PlusOutlined/>} size="medium">
+                    Add New Student
+                </Button>
+                <Empty/>
+            </>;
         } else {
             return <>
                 <StudentDrawerForm
