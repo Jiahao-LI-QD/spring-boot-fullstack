@@ -10,8 +10,8 @@ env:
   # Postgres
   POSTGRESQL_VERSION: 14.6
   POSTGRESQL_DB: spring
-  POSTGRESQL_USER: plusli
-  POSTGRESQL_PASSWORD: password1234
+  POSTGRESQL_USER: postgres
+  POSTGRESQL_PASSWORD: password
   # Java
   JAVA_VERSION: 1.17
   # DockerHub
