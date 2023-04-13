@@ -4,7 +4,21 @@ import React, {useEffect, useState} from "react";
 import {
     DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined, LoadingOutlined, PlusOutlined
 } from '@ant-design/icons';
-import {Breadcrumb, Layout, Menu, theme, Table, Spin, Empty, Button, Tag, Avatar, Popconfirm, Image} from 'antd';
+import {
+    Breadcrumb,
+    Layout,
+    Menu,
+    theme,
+    Table,
+    Spin,
+    Empty,
+    Button,
+    Tag,
+    Avatar,
+    Popconfirm,
+    Image,
+    Divider
+} from 'antd';
 import MenuItem from "antd/es/menu/MenuItem";
 import StudentDrawerForm from "./StudentDrawerForm";
 import {errorMsg, successMsg, warningMsg} from "./Messages";
@@ -149,7 +163,7 @@ function App() {
                            </>
                        }
                        pagination={{pageSize: 50}}
-                       scroll={{y: 500}}
+                       scroll={{y: 350}}
                        rowKey={(student) => student.id}
                 />
             </>
@@ -174,6 +188,14 @@ function App() {
                     width={75}
                     src = "https://user-images.githubusercontent.com/46433714/231851268-234c0c7d-8008-4566-8306-2629e1168704.png"
                 />
+                <Divider>
+                    <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href="https://github.com/Jiahao-LI-QD/spring-boot-fullstack">
+                        Github Repo
+                    </a>
+                </Divider>
             </Footer>
         </Layout>
     </Layout>
