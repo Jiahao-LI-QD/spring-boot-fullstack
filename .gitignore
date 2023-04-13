@@ -41,4 +41,4 @@ src/frontend/node_modules
 docker-desktop-data.tar
 
 ### Security ###
-src/main/resources/application-dev.yml
+#src/main/resources/application-dev.yml
