@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import {
     DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined, LoadingOutlined, PlusOutlined
 } from '@ant-design/icons';
-import {Breadcrumb, Layout, Menu, theme, Table, Spin, Empty, Button, Tag, Avatar, Popconfirm} from 'antd';
+import {Breadcrumb, Layout, Menu, theme, Table, Spin, Empty, Button, Tag, Avatar, Popconfirm, Image} from 'antd';
 import MenuItem from "antd/es/menu/MenuItem";
 import StudentDrawerForm from "./StudentDrawerForm";
 import {errorMsg, successMsg, warningMsg} from "./Messages";
@@ -169,7 +169,12 @@ function App() {
                     {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{textAlign: 'center'}}>By Plus Li</Footer>
+            <Footer style={{textAlign: 'center'}}>
+                <Image
+                    width={75}
+                    src = "https://user-images.githubusercontent.com/46433714/231851268-234c0c7d-8008-4566-8306-2629e1168704.png"
+                />
+            </Footer>
         </Layout>
     </Layout>
 }
