@@ -33,7 +33,7 @@ This avoids binding the Postgres server’s port and potentially exposing the se
 Mockaroo generates fake data for dev-test.
 <hr>
 
-## Deployment ##
+## Manual Deployment ##
 1. Manually Deployment: push docker to docker hub with plugin jib
 ```
     mvnw clean install -P build-frontend -P jib-push-to-dockerhub -Dapp.image.tag=x
@@ -41,3 +41,21 @@ Mockaroo generates fake data for dev-test.
 
 ### Environment variables ###
 1. spring.profiles.active=dev
+
+### CI ###
+Tools: GitHub Actions.
+Pull Request --> checkout code --> setup environment --> maven clean package
+
+### CD ###
+Tools: GitHub Actions, slack, AWS elastic beanstalk
+Merge to main 
+--> Slack Message: CICD ongoing
+--> Setup environment 
+--> Generate Build number: date-time
+--> docker login 
+--> maven clean package and build image
+--> Slack Message: pushed new version : ${Build number}
+--> update docker-compose.yml
+--> Slack Message: AWS deployment start
+--> AWS elastic beanstalk Deployment
+--> Slack Message: Deployment Done with online link
