@@ -5,7 +5,8 @@ on:
     branches: [ main ]
 
   workflow_dispatch:
-
+permissions:
+  contents: write
 env:
   # Postgres
   POSTGRESQL_VERSION: 14.6
