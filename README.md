@@ -5,7 +5,7 @@
 
 ## BackEnd ##
 
-**Spring Boot** \
+**Spring Boot 3** \
 Get / Post / Delete Student
 
 <hr>
