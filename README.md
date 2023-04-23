@@ -5,11 +5,15 @@
 
 ## BackEnd ##
 
-Student
+**Spring Boot**
+
 <hr>
 
 ## FrontEnd ##
 
+**React**
+
+**Components:** _Antd_
 <hr>
 
 ## Database ##
@@ -43,19 +47,35 @@ Mockaroo generates fake data for dev-test.
 1. spring.profiles.active=dev
 
 ### CI ###
-Tools: GitHub Actions.
-Pull Request --> checkout code --> setup environment --> maven clean package
+**Tools** : GitHub Actions.\
+**Pull Request** \
+--> checkout code \
+--> setup environment \
+--> maven clean package
 
 ### CD ###
-Tools: GitHub Actions, slack, AWS elastic beanstalk
-Merge to main 
---> Slack Message: CICD ongoing
---> Setup environment 
---> Generate Build number: date-time
---> docker login 
---> maven clean package and build image
---> Slack Message: pushed new version : ${Build number}
---> update docker-compose.yml
---> Slack Message: AWS deployment start
---> AWS elastic beanstalk Deployment
---> Slack Message: Deployment Done with online link
+**Tools**: GitHub Actions, slack, AWS elastic beanstalk\
+**Merge to main** \
+--> Slack Message: CICD ongoing \
+--> Setup environment \
+--> Generate Build number: date-time \
+--> docker login \
+--> maven clean package and build image \
+--> Slack Message: pushed new version : ${Build number} \
+--> update docker-compose.yml \
+--> Slack Message: AWS deployment start \
+--> AWS elastic beanstalk Deployment \
+--> Slack Message: Deployment Done with online link \
+
+## TEST ##
+
+### Unit Testing ###
+**Tool** : Assertj & Mock \
+**Target Class**:   \
+_StudentRepository_ \
+_StudentService_
+
+### Integration Testing ###
+**Tool** : failsafe \
+**Target Class**: \
+_StudentService_ 
