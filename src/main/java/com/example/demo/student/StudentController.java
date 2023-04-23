@@ -25,7 +25,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public void addStudnet(@Valid @RequestBody Student student){
+    public void addStudent(@Valid @RequestBody Student student){
         studentService.addStudent(student);
     }
 

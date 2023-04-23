@@ -68,4 +68,11 @@ public class Student {
     )
     @NotNull
     private Gender gender;
+
+    public Student(String firstName, String lastName, String email, Gender gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+    }
 }

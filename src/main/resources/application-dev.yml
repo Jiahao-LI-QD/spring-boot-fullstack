@@ -3,6 +3,7 @@ spring:
         password: password1234
         url: jdbc:postgresql://awseb-e-zz7kfvrtsh-stack-awsebrdsdatabase-cbekjy6nrqma.ccm7d0pa5c7t.ca-central-1.rds.amazonaws.com:5432/spring
         username: plusli
+        driver-class-name: org.postgresql.Driver
     jpa:
         hibernate:
             ddl-auto: update
