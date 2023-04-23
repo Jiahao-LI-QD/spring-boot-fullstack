@@ -5,7 +5,8 @@
 
 ## BackEnd ##
 
-**Spring Boot**
+**Spring Boot** \
+Get / Post / Delete Student
 
 <hr>
 
@@ -13,7 +14,13 @@
 
 **React**
 
-**Components:** _Antd_
+**Components:** _Antd_ \
+**UI view:** \
+![image](https://user-images.githubusercontent.com/46433714/233814451-a9c10b49-f975-4ae6-9c08-51d9da8a1054.png)
+
+**Add student** \
+![image](https://user-images.githubusercontent.com/46433714/233814479-bd1b8d2a-2091-4216-aef0-61001d6fee34.png)
+
 <hr>
 
 ## Database ##
@@ -66,6 +73,7 @@ Mockaroo generates fake data for dev-test.
 --> Slack Message: AWS deployment start \
 --> AWS elastic beanstalk Deployment \
 --> Slack Message: Deployment Done with online link \
+<hr>
 
 ## TEST ##
 
@@ -78,4 +86,4 @@ _StudentService_
 ### Integration Testing ###
 **Tool** : failsafe \
 **Target Class**: \
-_StudentService_ 
+_StudentController_ 
