@@ -2,6 +2,7 @@
 <hr>
 
 [Preview](http://springbootreactfullstack-env.eba-qdcyddxq.ca-central-1.elasticbeanstalk.com/)
+_(The link is no longer supported)_
 
 ## BackEnd ##
 
